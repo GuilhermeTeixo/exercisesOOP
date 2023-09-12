@@ -1,10 +1,10 @@
-package exerciseRectangle;
+package exercises;
 import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Rectangle;
 
-public class Ex1 {
+public class Program1 {
 
 	public static void main(String[] args) {
 		
