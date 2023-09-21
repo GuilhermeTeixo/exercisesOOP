@@ -11,18 +11,42 @@ public class Program5 {
 
 	Locale.setDefault(Locale.US);
 	Scanner sc = new Scanner(System.in);
+	Account account;
 	
-	System.out.println("Enter account numer: ");
-	Account.setAccountNumber(sc.nextInt());
-	System.out.println("Enter account holder: ");
-	String clientName=sc.next();
-	System.out.println("Is there an initial deposit (y/n)?");
-	String initialDeposit=sc.next();
+	System.out.print("Enter account numer: ");
+	int number = sc.nextInt();
+	System.out.print("Enter account holder: ");
+	sc.nextLine();
+	String holder = sc.nextLine();
+	System.out.print("Is there an initial deposit (y/n)?");
+	char response = sc.next().charAt(0) ;
+
+	if (response == 'y') {
+		System.out.println("Enter initial deposit: ");
+		double initialDeposit = sc.nextDouble();
+		account = new Account (number, holder, initialDeposit);
+	} 
+	else {
+		account = new Account (number, holder);
+	}
 	
-	Account account = new Account(clientName, 0, initialDeposit);
+	System.out.println();
+	System.out.println("Account data:");
+	System.out.println(account);
 	
-	account.accountInfo();
+	System.out.println();
+	System.out.print("Enter a deposit value: ");
+	double depositValue=sc.nextDouble();
+	account.deposit(depositValue);
+	System.out.println("Updated accout data: ");
+	System.out.println(account);
 	
+	System.out.println();
+	System.out.print("Enter a withdraw value: ");
+	double withdrawValue=sc.nextDouble();
+	account.deposit(withdrawValue);
+	System.out.println("Updated accout data: ");
+	System.out.println(account);
 	
 	sc.close();
 	}	

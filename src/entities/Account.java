@@ -2,38 +2,55 @@ package entities;
 
 public class Account {
 	
-	public static int accountNumber;
-	public String clientName;
-	public double balance;
-	public String initialDeposit;
+	private int number;
+	private String holder;
+	private double balance;
 	
-	public Account(String clientName, double balance, String initialDeposit) {
-		this.clientName = clientName;
-		this.balance = balance;
-	
-	if (initialDeposit.equalsIgnoreCase("y")) {
-		this.initialDeposit = "y";
-		
-	} else if (initialDeposit.equalsIgnoreCase("n")) {
-		this.initialDeposit = "n";
-		
-	} else {
-		
-		System.out.println("Please,use 'y' or 'n' to anwser correctly.");
-		this.initialDeposit = "n";
-		}
+	public Account(int number, String holder) {
+		this.number = number;
+		this.holder = holder;
 	}
 	
-	public String accountInfo() {
-		System.out.printf("Account data: \nAccount %d, Houlder: %s, Balance: $%f\n",accountNumber, clientName, balance);
-		return accountInfo();
+	public Account(int number, String holder, double initialDeposit) {
+		this.number = number;
+		this.holder = holder;
+		deposit(initialDeposit);
 	}
 
-	public static int getAccountNumber() {
-		return accountNumber;
+	public String getHolder() {
+		return holder;
 	}
 
-	public static void setAccountNumber(int accountNumber) {
-		Account.accountNumber = accountNumber;
+	public void setHolder(String holder) {
+		this.holder = holder;
 	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+	
+	public void deposit(double amount) {
+		balance += amount;
+	}
+	
+	public void withdraw(double amount) {
+		balance -= amount + 5.0;
+	}
+	
+	public String toString() {
+		return "Account "
+				+ number
+				+ ", Holder: "
+				+ holder
+				+ ", Balance: $"
+				+ String.format("%.2f", balance);
+	}
+	
+	
+	
+	
 }
